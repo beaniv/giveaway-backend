@@ -1,2 +1,2 @@
 # giveaway-backend
-UPPRPO Project
+backend
