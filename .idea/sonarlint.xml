@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
-    <option name="projectKey" value="jecter1_giveawayTest" />
-    <option name="serverId" value="jecter1" />
+    <option name="projectKey" value="beaniv_giveaway-backend" />
+    <option name="serverId" value="giveaway-backend" />
   </component>
 </project>
