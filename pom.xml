@@ -17,10 +17,6 @@
                     <target>11</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
@@ -57,9 +53,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.sonarsource.scanner.maven</groupId>
-            <artifactId>sonar-maven-plugin</artifactId>
-            <version>3.7.0.1746</version>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+            <version>8.9.0.43852</version>
         </dependency>
 
         <dependency>
