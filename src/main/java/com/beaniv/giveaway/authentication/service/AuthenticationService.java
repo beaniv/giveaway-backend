@@ -1,8 +1,8 @@
 package com.beaniv.giveaway.authentication.service;
 
-import com.beaniv.giveaway.model.dto.Credentials;
-import com.beaniv.giveaway.model.dto.UserDto;
-import com.beaniv.giveaway.model.dto.UserRegistrationDto;
+import com.beaniv.giveaway.model.dto.user.Credentials;
+import com.beaniv.giveaway.model.dto.user.UserDto;
+import com.beaniv.giveaway.model.dto.user.UserRegistrationDto;
 import com.beaniv.giveaway.util.dtotransformservice.DtoTransformService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,9 @@ public class AuthenticationService {
         String login = credentials.getLogin();
         String password = credentials.getPassword();
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login, password));
+        UsernamePasswordAuthenticationToken asd = new UsernamePasswordAuthenticationToken(login, password);
+        authenticationManager.authenticate(asd);
+        System.out.println("1: " + asd.getPrincipal().toString());
 
         log.info("User {} logged in", login);
 

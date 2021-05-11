@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(REGISTRATION_ENDPOINT).permitAll()
                     .antMatchers(AUTHENTICATION_ENDPOINT).permitAll()
                     .antMatchers(SWAGGER_WHITELIST).permitAll()
-                    .antMatchers("/api/v1/**").permitAll()
+                    .antMatchers("/api/v1/auth/**").permitAll()
                     .antMatchers("/restoreSuccess.html").permitAll()
                     .anyRequest().authenticated()
                 .and()

@@ -1,4 +1,4 @@
-package com.beaniv.giveaway.model.dto;
+package com.beaniv.giveaway.model.dto.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
