@@ -46,19 +46,18 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public User findByUserId(Integer id) {
-        var user = userRepository.findById(id).orElse(null);
+    public User findByUserId(int id) {
+        var user = userRepository.findById(id);
 
         if (user == null) {
             log.warn("IN findById - no user found by id: {}", id);
-            return null;
         }
 
         return user;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(int id) {
         userRepository.deleteById(id);
 
         log.info("IN delete - user with id: {} successfully deleted", id);

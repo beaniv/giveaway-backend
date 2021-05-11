@@ -4,6 +4,7 @@ import com.beaniv.giveaway.authentication.security.jwt.JwtUser;
 import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
 import com.beaniv.giveaway.model.dto.post.PostIdDto;
 import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
+import com.beaniv.giveaway.model.dto.post.RegisterPostDto;
 import com.beaniv.giveaway.posts.PostsService;
 import com.beaniv.giveaway.util.dtotransformservice.DtoTransformService;
 import io.swagger.annotations.ApiOperation;
@@ -36,14 +37,21 @@ public class PostsController {
         return postsService.getUserPosts(userId);
     }
 
+    @GetMapping("/get-post/{id}")
+    @ApiOperation(value = "Получить подробное описание конкретного поста", response = DetailedPostDto.class)
+    public DetailedPostDto getPost(@PathVariable String id) {
+        var postId = Integer.parseInt(id);
+        return postsService.getPost(postId);
+    }
+
     @PostMapping("/add-post")
     @ApiOperation("Добавление поста")
     public void addPost(
             @ApiParam(required = true, value = "Информация о посте")
             @AuthenticationPrincipal JwtUser user,
-            @RequestBody DetailedPostDto detailedPostDto) {
+            @RequestBody RegisterPostDto registerPostDto) {
         int userId = user.getId();
-        var post = dtoTransformService.convertToPost(detailedPostDto);
+        var post = dtoTransformService.convertToPost(registerPostDto);
         post.setCreatorId(userId);
         postsService.addPost(post);
     }
@@ -55,7 +63,7 @@ public class PostsController {
             @AuthenticationPrincipal JwtUser user,
             @RequestBody PostIdDto postIdDto) {
         int userId = user.getId();
-        int postId = postIdDto.getPostID();
+        int postId = postIdDto.getId();
         postsService.addUserToPost(userId, postId);
     }
 
@@ -66,7 +74,7 @@ public class PostsController {
             @AuthenticationPrincipal JwtUser user,
             @RequestBody PostIdDto postIdDto) {
         int userId = user.getId();
-        int postId = postIdDto.getPostID();
+        int postId = postIdDto.getId();
         postsService.removeUserFromPost(userId, postId);
     }
 }

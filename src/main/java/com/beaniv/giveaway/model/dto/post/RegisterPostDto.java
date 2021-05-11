@@ -6,10 +6,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "Информация о посте")
-public class DetailedPostDto {
-    @ApiModelProperty(value = "ID поста", required = true, example = "1")
-    private int id;
-
+public class RegisterPostDto {
     @ApiModelProperty(value = "Заголовок", required = true, example = "Розыгрыш")
     private String title;
 

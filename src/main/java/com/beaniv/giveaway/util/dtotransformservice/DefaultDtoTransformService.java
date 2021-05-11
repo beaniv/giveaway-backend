@@ -2,6 +2,7 @@ package com.beaniv.giveaway.util.dtotransformservice;
 
 import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
 import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
+import com.beaniv.giveaway.model.dto.post.RegisterPostDto;
 import com.beaniv.giveaway.model.dto.user.UserDto;
 import com.beaniv.giveaway.model.entity.Post;
 import com.beaniv.giveaway.model.entity.User;
@@ -23,8 +24,13 @@ public class DefaultDtoTransformService implements DtoTransformService {
     }
 
     @Override
-    public Post convertToPost(DetailedPostDto detailedPostDto) {
-        return modelMapper.map(detailedPostDto, Post.class);
+    public Post convertToPost(RegisterPostDto registerPostDto) {
+        return modelMapper.map(registerPostDto, Post.class);
+    }
+
+    @Override
+    public DetailedPostDto convertToDetailedPostDto(Post post) {
+        return modelMapper.map(post, DetailedPostDto.class);
     }
 
     @Override

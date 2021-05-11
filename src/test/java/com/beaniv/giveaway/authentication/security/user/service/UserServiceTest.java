@@ -71,18 +71,18 @@ public class UserServiceTest {
         Assertions.assertEquals(userService.findByEmail("ivan@gmail.com"), repositoryUser);
     }
 
-//    @Test
-//    public void testFindByUserId() {
-//        User repositoryUser = new User();
-//        repositoryUser.setId(1);
-//        repositoryUser.setEmail("ivan@gmail.com");
-//        repositoryUser.setPassword("password");
-//
-//        Mockito.when(userRepository.findById(1)).thenReturn(Optional.of(repositoryUser));
-//        Assertions.assertEquals(userService.findByUserId(1), repositoryUser);
-//
-//        Assertions.assertNull(userService.findByUserId(2));
-//    }
+    @Test
+    public void testFindByUserId() {
+        User repositoryUser = new User();
+        repositoryUser.setId(1);
+        repositoryUser.setEmail("ivan@gmail.com");
+        repositoryUser.setPassword("SecretPassword");
+
+        Mockito.when(userRepository.findById(1)).thenReturn(repositoryUser);
+        Assertions.assertEquals(repositoryUser, userService.findByUserId(1));
+
+        Assertions.assertNull(userService.findByUserId(2));
+    }
 
     @Test
     public void testDelete() {

@@ -8,5 +8,5 @@ import lombok.Data;
 @ApiModel(description = "ID поста")
 public class PostIdDto {
     @ApiModelProperty(value = "ID поста", required = true, example = "1")
-    private int postID;
+    private int id;
 }

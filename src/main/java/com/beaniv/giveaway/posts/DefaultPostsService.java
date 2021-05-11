@@ -1,5 +1,6 @@
 package com.beaniv.giveaway.posts;
 
+import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
 import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
 import com.beaniv.giveaway.model.entity.Post;
 import com.beaniv.giveaway.repository.PostRepository;
@@ -33,6 +34,12 @@ public class DefaultPostsService implements PostsService {
         Set<Post> posts = user.getPosts();
 
         return dtoTransformService.convertToSetHomescreenPostDto(posts);
+    }
+
+    @Override
+    public DetailedPostDto getPost(int postId) {
+        var post = postRepository.findById(postId);
+        return dtoTransformService.convertToDetailedPostDto(post);
     }
 
     @Override
