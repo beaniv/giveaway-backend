@@ -1,23 +1,19 @@
 package com.beaniv.giveaway.posts;
 
-import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
+import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
 import com.beaniv.giveaway.model.entity.Post;
-import com.beaniv.giveaway.model.entity.User;
 import com.beaniv.giveaway.repository.PostRepository;
 import com.beaniv.giveaway.repository.UserRepository;
 import com.beaniv.giveaway.util.dtotransformservice.DtoTransformService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import javax.persistence.EntityManager;
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class DefaultPostsService implements PostsService {
-
-    private final EntityManager entityManager;
 
     private final DtoTransformService dtoTransformService;
 
@@ -26,45 +22,45 @@ public class DefaultPostsService implements PostsService {
     private final UserRepository userRepository;
 
     @Override
-    public Set<DetailedPostDto> getPosts() {
+    public Set<HomescreenPostDto> getPosts() {
         Set<Post> posts = postRepository.findAllBy();
-        return dtoTransformService.convertToSetPostInfoDto(posts);
+        return dtoTransformService.convertToSetHomescreenPostDto(posts);
     }
 
     @Override
-    public Post addPost(Post post) {
-        return postRepository.save(post);
+    public Set<HomescreenPostDto> getUserPosts(int userId) {
+        var user = userRepository.findById(userId);
+        Set<Post> posts = user.getPosts();
+
+        return dtoTransformService.convertToSetHomescreenPostDto(posts);
     }
 
     @Override
-    public User addUserToPost(int userId, int postId) {
-        User user = userRepository.findById(userId);
-        Post post = postRepository.findById(postId);
+    public void addPost(Post post) {
+        postRepository.save(post);
+    }
+
+    @Override
+    public void addUserToPost(int userId, int postId) {
+        var user = userRepository.findById(userId);
+        var post = postRepository.findById(postId);
 
         Set<Post> posts = user.getPosts();
         posts.add(post);
         user.setPosts(posts);
 
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override
-    public User removeUserFromPost(int userId, int postId) {
-        User user = userRepository.findById(userId);
-        Post post = postRepository.findById(postId);
+    public void removeUserFromPost(int userId, int postId) {
+        var user = userRepository.findById(userId);
+        var post = postRepository.findById(postId);
 
         Set<Post> posts = user.getPosts();
         posts.remove(post);
         user.setPosts(posts);
 
-        return userRepository.save(user);
-    }
-
-    @Override
-    public Set<DetailedPostDto> getUserPosts(int userId) {
-        User user = userRepository.findById(userId);
-        Set<Post> posts = user.getPosts();
-
-        return dtoTransformService.convertToSetPostInfoDto(posts);
+        userRepository.save(user);
     }
 }

@@ -1,9 +1,9 @@
 package com.beaniv.giveaway.posts.controller;
 
 import com.beaniv.giveaway.authentication.security.jwt.JwtUser;
+import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
 import com.beaniv.giveaway.model.dto.post.PostIdDto;
 import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
-import com.beaniv.giveaway.model.entity.Post;
 import com.beaniv.giveaway.posts.PostsService;
 import com.beaniv.giveaway.util.dtotransformservice.DtoTransformService;
 import io.swagger.annotations.ApiOperation;
@@ -24,14 +24,14 @@ public class PostsController {
     private final DtoTransformService dtoTransformService;
 
     @GetMapping("/get-posts")
-    @ApiOperation(value = "Получить все посты", response = DetailedPostDto.class, responseContainer = "Set")
-    public Set<DetailedPostDto> getPosts() {
+    @ApiOperation(value = "Получить все посты", response = HomescreenPostDto.class, responseContainer = "Set")
+    public Set<HomescreenPostDto> getPosts() {
         return postsService.getPosts();
     }
 
     @GetMapping("/get-my-posts")
-    @ApiOperation(value = "Получить посты в которых участвует пользователь", response = DetailedPostDto.class, responseContainer = "Set")
-    public Set<DetailedPostDto> getMyPosts(@AuthenticationPrincipal JwtUser user) {
+    @ApiOperation(value = "Получить посты в которых участвует пользователь", response = HomescreenPostDto.class, responseContainer = "Set")
+    public Set<HomescreenPostDto> getMyPosts(@AuthenticationPrincipal JwtUser user) {
         int userId = user.getId();
         return postsService.getUserPosts(userId);
     }
@@ -40,8 +40,11 @@ public class PostsController {
     @ApiOperation("Добавление поста")
     public void addPost(
             @ApiParam(required = true, value = "Информация о посте")
+            @AuthenticationPrincipal JwtUser user,
             @RequestBody DetailedPostDto detailedPostDto) {
-        Post post = dtoTransformService.convertToPost(detailedPostDto);
+        int userId = user.getId();
+        var post = dtoTransformService.convertToPost(detailedPostDto);
+        post.setCreatorId(userId);
         postsService.addPost(post);
     }
 

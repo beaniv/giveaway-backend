@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +20,7 @@ public class DefaultUserService implements UserService {
     public User register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        User registeredUser = userRepository.save(user);
+        var registeredUser = userRepository.save(user);
 
         log.info("IN register - user {} was successfully registered", registeredUser);
 
@@ -39,7 +38,7 @@ public class DefaultUserService implements UserService {
 
     @Override
     public User findByEmail(String email) {
-        User user = userRepository.findByEmail(email);
+        var user = userRepository.findByEmail(email);
 
         log.info("IN findByUsername - user: {} found by email {}", user, email);
 
@@ -48,7 +47,7 @@ public class DefaultUserService implements UserService {
 
     @Override
     public User findByUserId(Integer id) {
-        User user = userRepository.findById(id).orElse(null);
+        var user = userRepository.findById(id).orElse(null);
 
         if (user == null) {
             log.warn("IN findById - no user found by id: {}", id);

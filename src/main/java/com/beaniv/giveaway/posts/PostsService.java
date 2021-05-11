@@ -1,19 +1,18 @@
 package com.beaniv.giveaway.posts;
 
-import com.beaniv.giveaway.model.dto.post.DetailedPostDto;
+import com.beaniv.giveaway.model.dto.post.HomescreenPostDto;
 import com.beaniv.giveaway.model.entity.Post;
-import com.beaniv.giveaway.model.entity.User;
 
 import java.util.Set;
 
 public interface PostsService {
-    Set<DetailedPostDto> getPosts();
+    Set<HomescreenPostDto> getPosts();
 
-    Post addPost(Post post);
+    Set<HomescreenPostDto> getUserPosts(int userID);
 
-    User addUserToPost(int userID, int postID);
+    void addPost(Post post);
 
-    User removeUserFromPost(int userID, int postID);
+    void addUserToPost(int userID, int postID);
 
-    Set<DetailedPostDto> getUserPosts(int userID);
+    void removeUserFromPost(int userID, int postID);
 }

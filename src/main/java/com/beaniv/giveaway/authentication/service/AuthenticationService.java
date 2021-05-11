@@ -32,9 +32,8 @@ public class AuthenticationService {
         String login = credentials.getLogin();
         String password = credentials.getPassword();
 
-        UsernamePasswordAuthenticationToken asd = new UsernamePasswordAuthenticationToken(login, password);
-        authenticationManager.authenticate(asd);
-        System.out.println("1: " + asd.getPrincipal().toString());
+        var token = new UsernamePasswordAuthenticationToken(login, password);
+        authenticationManager.authenticate(token);
 
         log.info("User {} logged in", login);
 

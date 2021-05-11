@@ -55,7 +55,8 @@ class JwtTokenProviderTest {
 
         Assertions.assertTrue(jwtTokenProvider.validateToken(token));
 
-        Assertions.assertThrows(JwtAuthenticationException.class, () -> jwtTokenProvider.validateToken(UUID.randomUUID().toString()));
+        String randomUuid = UUID.randomUUID().toString();
+        Assertions.assertThrows(JwtAuthenticationException.class, () -> jwtTokenProvider.validateToken(randomUuid));
 
         jwtTokenProvider = spy(new JwtTokenProvider("secret", (long) -1, null));
 

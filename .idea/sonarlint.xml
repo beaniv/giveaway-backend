@@ -3,6 +3,6 @@
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
     <option name="projectKey" value="beaniv_giveaway-backend" />
-    <option name="serverId" value="giveaway-backend" />
+    <option name="serverId" value="giveaway" />
   </component>
 </project>
