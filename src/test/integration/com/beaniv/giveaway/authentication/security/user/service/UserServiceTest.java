@@ -1,5 +1,6 @@
 package com.beaniv.giveaway.authentication.security.user.service;
 
+import com.beaniv.giveaway.authentication.security.user.service.UserService;
 import com.beaniv.giveaway.model.entity.User;
 import com.beaniv.giveaway.repository.UserRepository;
 import org.junit.Test;
