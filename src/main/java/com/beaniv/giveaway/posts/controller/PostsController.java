@@ -57,7 +57,7 @@ public class PostsController {
     }
 
     @PostMapping("/add-user-to-post")
-    @ApiOperation("Добавление участника в конкурс")
+    @ApiOperation("Добавление участника в пост")
     public void addUserToPost(
             @ApiParam(required = true, value = "ID пользователя и ID поста")
             @AuthenticationPrincipal JwtUser user,
@@ -68,7 +68,7 @@ public class PostsController {
     }
 
     @DeleteMapping("/remove-user-from-post")
-    @ApiOperation("Удаление участника из конкурса")
+    @ApiOperation("Удаление участника из поста")
     public void removeUserFromPost(
             @ApiParam(required = true, value = "ID пользователя и ID поста")
             @AuthenticationPrincipal JwtUser user,
