@@ -1,5 +1,6 @@
 package com.beaniv.giveaway.authentication.security;
 
+import com.beaniv.giveaway.authentication.security.JwtUserDetailService;
 import com.beaniv.giveaway.authentication.security.jwt.JwtUser;
 import com.beaniv.giveaway.authentication.security.user.service.UserService;
 import com.beaniv.giveaway.model.entity.User;

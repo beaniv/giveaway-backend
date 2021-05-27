@@ -9,7 +9,5 @@ o
 ?src/main/java/com/beaniv/giveaway/model/dto/post/PostIdDto.java,6\0\603de7ef640c1b49ad29bc805d2b50705d698db2
 y
 Isrc/main/java/com/beaniv/giveaway/model/dto/user/UserRegistrationDto.java,e\f\efd362b5ceba3541efa4890f48748c59c5fe4455
-j
-:src/main/java/com/beaniv/giveaway/GiveawayApplication.java,e\f\ef2dda4da6477a1a9775dc1d59cbfe55627d6566
 i
 9src/main/java/com/beaniv/giveaway/posts/PostsService.java,9\f\9f9c13f302e5369fe279d06ab70025b2e7811711

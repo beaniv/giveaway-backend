@@ -1,5 +1,7 @@
 package com.beaniv.giveaway.authentication.security.jwt;
 
+import com.beaniv.giveaway.authentication.security.jwt.JwtUser;
+import com.beaniv.giveaway.authentication.security.jwt.JwtUserFactory;
 import com.beaniv.giveaway.model.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

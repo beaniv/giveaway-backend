@@ -1,5 +1,6 @@
 package com.beaniv.giveaway.authentication.security.jwt;
 
+import com.beaniv.giveaway.authentication.security.jwt.JwtUser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
