@@ -41,8 +41,6 @@ p
 @src/main/java/com/beaniv/giveaway/repository/PostRepository.java,9\f\9ffe3172d029983451c3dc497f499c02e766476f
 p
 @src/main/java/com/beaniv/giveaway/repository/UserRepository.java,7\d\7d104d736545953e4e99c75bf84169522827871f
-ƒ
-Ssrc/main/java/com/beaniv/giveaway/authentication/service/AuthenticationService.java,9\e\9ecc93f56d7c1fa00e25c08badd9272ec4b04c29
 z
 Jsrc/main/java/com/beaniv/giveaway/authentication/security/jwt/JwtUser.java,8\d\8dce4fee442f4c5a1ce347c31af5b55520469053
 €
