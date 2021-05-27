@@ -46,15 +46,17 @@ public class DefaultPostsService implements PostsService {
         var post = postRepository.findById(postId);
 
         var currentTime = new Timestamp(System.currentTimeMillis());
-        if(currentTime.after(post.getFinishTime()) && post.getWinnerId() == 0) {
+        if (currentTime.after(post.getFinishTime()) && post.getWinnerId() == 0) {
             Set<User> users = post.getUsers();
 
             var usersArray = new User[users.size()];
             users.toArray(usersArray);
 
-            if(users.isEmpty()) {
+            if (users.isEmpty()) {
                 post.setWinnerId(-1);
-            } else post.setWinnerId(usersArray[random.nextInt(users.size())].getId());
+            } else {
+                post.setWinnerId(usersArray[random.nextInt(users.size())].getId());
+            }
 
             postRepository.save(post);
         }
