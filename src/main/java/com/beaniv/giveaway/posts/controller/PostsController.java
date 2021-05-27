@@ -39,9 +39,11 @@ public class PostsController {
 
     @GetMapping("/get-post/{id}")
     @ApiOperation(value = "Получить подробное описание конкретного поста", response = DetailedPostDto.class)
-    public DetailedPostDto getPost(@PathVariable String id) {
+    public DetailedPostDto getPost(@AuthenticationPrincipal JwtUser user,
+                                   @PathVariable String id) {
         var postId = Integer.parseInt(id);
-        return postsService.getPost(postId);
+        int userId = user.getId();
+        return postsService.getPost(postId, userId);
     }
 
     @PostMapping("/add-post")

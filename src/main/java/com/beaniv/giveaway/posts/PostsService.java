@@ -11,7 +11,7 @@ public interface PostsService {
 
     Set<HomescreenPostDto> getUserPosts(int userId);
 
-    DetailedPostDto getPost(int postId);
+    DetailedPostDto getPost(int postId, int userId);
 
     void addPost(Post post);
 

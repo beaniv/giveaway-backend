@@ -3,6 +3,7 @@ package com.beaniv.giveaway.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -25,4 +26,8 @@ public class Post extends BaseEntity {
 
     @ManyToMany(mappedBy = "posts")
     private Set<User> users;
+
+    private Timestamp finishTime;
+
+    private int winnerId;
 }

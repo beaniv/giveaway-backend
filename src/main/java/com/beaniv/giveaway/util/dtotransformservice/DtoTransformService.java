@@ -14,7 +14,7 @@ public interface DtoTransformService {
 
     Post convertToPost(RegisterPostDto registerPostDto);
 
-    DetailedPostDto convertToDetailedPostDto(Post post);
+    DetailedPostDto convertToDetailedPostDto(Post post, int userId);
 
     Set<HomescreenPostDto> convertToSetHomescreenPostDto(Set<Post> posts);
 }
