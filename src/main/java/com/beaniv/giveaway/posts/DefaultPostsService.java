@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class DefaultPostsService implements PostsService {
 
     private final UserRepository userRepository;
 
-    private final Random random = new Random();
+    private final Random random = new SecureRandom();
 
     @Override
     public Set<HomescreenPostDto> getPosts() {
